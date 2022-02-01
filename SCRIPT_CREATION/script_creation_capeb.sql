@@ -27,6 +27,7 @@ create table COMPTE (
 create table CATEGORIE_QUESTION (
    ID_CATEGORIE         INT4                 not null,
    ID_QUESTIONNAIRE     INT4                 not null,
+   libelle              TEXT                 not null,
    constraint PK_CATEGORIE_QUESTION primary key (ID_CATEGORIE)
 );
 
@@ -51,9 +52,7 @@ create table METIER_QUESTION (
 create table PRECONISATION_CATEGORIE (
    ID_PRECONISATION     INT4                 not null,
    ID_CATEGORIE         INT4                 not null,
-   SCOPE                TEXT                 null,
-   SCORE_MIN_GLOB       INT4                 null,
-   SCORE_MAX_GLOB       INT4                 null,
+   viewIfPourcentageScoreLessThan       INT4                 null,
    constraint PK_PRECONISATION_CATEGORIE primary key (ID_PRECONISATION)
 );
 
@@ -61,8 +60,7 @@ create table PRECONISATION_GLOBALE (
    ID_PRECONISATION_G   INT4                 not null,
    ID_QUESTIONNAIRE     INT4                 not null,
    CONTENU              TEXT                 null,
-   SCORE_MIN_GLOB       INT4                 null,
-   SCORE_MAX_GLOB       INT4                 null,
+   viewIfPourcentageScoreLessThan       INT4                 null,
    constraint PK_PRECONISATION_GLOBALE primary key (ID_PRECONISATION_G)
 );
 
@@ -72,7 +70,6 @@ create table QUESTION (
    ID_QUESTION          INT4                 not null,
    ID_CATEGORIE         INT4                 not null,
    TYPE                 TYPE_QUESTION        null,
-   AIDE                 TEXT                 null,
    LIBELLE_QUESTION     TEXT                 null,
    constraint PK_QUESTION primary key (ID_QUESTION)
 );
