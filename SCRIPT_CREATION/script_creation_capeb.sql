@@ -1,5 +1,5 @@
 create table ENTREPRISE (
-   _NOENTREPRISE__      INT4                 not null,
+   _NOENTREPRISE__      SERIAL                 ,
    NOSIRET              TEXT                 null,
    NOM_ENTREPRISE                TEXT                 null,
    EFFECTIF             INT4                 null,
@@ -8,14 +8,14 @@ create table ENTREPRISE (
 );
 
 create table COMPTE (
-   ID_COMPTE            INT4                 not null,
-   _NOENTREPRISE__      INT4                 null,
-   IS_ADMIN             BOOL                 null,
-   MAIL                 TEXT                 null,
-   PWD                  TEXT                 null,
+   ID_COMPTE            SERIAL               ,
+   _NOENTREPRISE__      INT4                 not null,
+   IS_ADMIN             BOOL                 not null,
+   MAIL                 TEXT                 not null,
+   PWD                  TEXT                 not null,
    _NAME                TEXT                 null,
    FIRST_NAME           TEXT                 null,
-   IS_VALID             BOOL                 null,
+   IS_VALID             BOOL                 not null,
    CREATION_DATE        DATE                 null,
    LAST_LOGIN           DATE                 null,
    IS_CGU               BOOL                 null,
@@ -25,21 +25,21 @@ create table COMPTE (
 );
 
 create table CATEGORIE_QUESTION (
-   ID_CATEGORIE         INT4                 not null,
+   ID_CATEGORIE         SERIAL               ,
    ID_QUESTIONNAIRE     INT4                 not null,
    libelle              TEXT                 not null,
    constraint PK_CATEGORIE_QUESTION primary key (ID_CATEGORIE)
 );
 
 create table EVALUATION (
-   ID_EVALUATION        INT4                 not null,
+   ID_EVALUATION        SERIAL               ,
    ID_COMPTE            INT4                 not null,
    constraint PK_EVALUATION primary key (ID_EVALUATION)
 );
 
 create table METIER (
-   ID_METIER            INT4                 not null,
-   NOM_METIER           TEXT                 null,
+   ID_METIER            SERIAL               ,
+   NOM_METIER           TEXT                not null,
    constraint PK_METIER primary key (ID_METIER)
 );
 
@@ -50,14 +50,15 @@ create table METIER_QUESTION (
 );
 
 create table PRECONISATION_CATEGORIE (
-   ID_PRECONISATION     INT4                 not null,
+   ID_PRECONISATION     SERIAL               ,
    ID_CATEGORIE         INT4                 not null,
+   contenu     text        null,
    viewIfPourcentageScoreLessThan       INT4                 null,
    constraint PK_PRECONISATION_CATEGORIE primary key (ID_PRECONISATION)
 );
 
 create table PRECONISATION_GLOBALE (
-   ID_PRECONISATION_G   INT4                 not null,
+   ID_PRECONISATION_G   SERIAL               ,
    ID_QUESTIONNAIRE     INT4                 not null,
    CONTENU              TEXT                 null,
    viewIfPourcentageScoreLessThan       INT4                 null,
@@ -67,7 +68,7 @@ create table PRECONISATION_GLOBALE (
 CREATE TYPE TYPE_QUESTION AS ENUM ('Question Choix Unique', 'Question Choix Multiple');
 
 create table QUESTION (
-   ID_QUESTION          INT4                 not null,
+   ID_QUESTION          SERIAL                 ,
    ID_CATEGORIE         INT4                 not null,
    TYPE                 TYPE_QUESTION        null,
    LIBELLE_QUESTION     TEXT                 null,
@@ -75,15 +76,15 @@ create table QUESTION (
 );
 
 create table QUESTIONNAIRE (
-   ID_QUESTIONNAIRE     INT4                 not null,
-   THEMATIQUE           TEXT                 null,
+   ID_QUESTIONNAIRE     SERIAL               ,
+   THEMATIQUE           TEXT                not null,
    constraint PK_QUESTIONNAIRE primary key (ID_QUESTIONNAIRE)
 );
 
 create table REPONSE (
-   ID_REPONSE           INT4                 not null,
+   ID_REPONSE           SERIAL               ,
    ID_QUESTION          INT4                 not null,
-   NB_POINTS            INT4                 null,
+   NB_POINTS            INT4                 not null,
    CONTENU              TEXT                 null,
    constraint PK_REPONSE primary key (ID_REPONSE)
 );
