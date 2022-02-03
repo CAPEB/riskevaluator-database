@@ -47,10 +47,18 @@ CREATE FUNCTION lib_quest() RETURNS trigger AS $lib_quest$
         select count(*) into nb from question
 		where (id_categorie in (SELECT id_categorie  FROM questionnaire q INNER JOIN categorie_question cq  ON q.id_questionnaire  = cq.id_questionnaire )) 
 		and libelle_question = new.libelle_question  ;
-
-        IF nb > 0  THEN
-            RAISE EXCEPTION 'libelle existe déjà:  %  ', NEW.libelle_question;
-        END IF;
+		
+		if  (TG_OP = 'INSERT') then
+	        IF nb > 0   then
+	            RAISE EXCEPTION 'libelle existe déjà:  %  ', NEW.libelle_question;
+	        END IF;
+	    end if ;
+	   
+	    if (TG_OP = 'UPDATE') then
+		    IF nb > 1  then
+		            RAISE EXCEPTION 'libelle existe déjà:  %  ', NEW.libelle_question;
+		    END IF;
+		end if;
 		return new;
         
     END;--
