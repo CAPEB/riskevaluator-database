@@ -2,8 +2,8 @@ INSERT INTO ENTREPRISE (NOSIRET,NOM_ENTREPRISE,EFFECTIF,ANNEEDECREATION ) VALUES
 INSERT INTO ENTREPRISE (NOSIRET,NOM_ENTREPRISE,EFFECTIF,ANNEEDECREATION ) VALUES ('AG6778','CZPLomberie',5,2000);
 
 
-insert  into compte (_noentreprise__,is_admin,mail,pwd,_name,first_name,is_valid,creation_date,last_login,is_cgu,is_forgotpass,is_temp_password) values (1,true,'a@gmail.com','pwd','rob','rob',true,'1999-01-08','1999-01-08',true,false,false);
-insert  into compte (_noentreprise__,is_admin,mail,pwd,_name,first_name,is_valid,creation_date,last_login,is_cgu,is_forgotpass,is_temp_password) values (2,true,'b@gmail.com','pwd2','bob','bob',true,'2000-01-08','2000-01-08',true,false,false);
+insert  into compte (is_admin,mail,pwd,_name,first_name,is_valid,creation_date,last_login,is_cgu,is_forgotpass,is_temp_password) values (true,'a@gmail.com','pwd','rob','rob',true,'1999-01-08','1999-01-08',true,false,false);
+insert  into compte (is_admin,mail,pwd,_name,first_name,is_valid,creation_date,last_login,is_cgu,is_forgotpass,is_temp_password) values (true,'b@gmail.com','pwd2','bob','bob',true,'2000-01-08','2000-01-08',true,false,false);
 
 
 insert  into questionnaire  (thematique) values ('Securité pour les meties du batiments');
