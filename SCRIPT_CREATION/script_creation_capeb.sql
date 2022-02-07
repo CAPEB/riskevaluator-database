@@ -1,15 +1,14 @@
 create table ENTREPRISE (
-   _NOENTREPRISE__      SERIAL                 ,
-   NOSIRET              TEXT                 null,
+   NOSIRET              int                 null,
    NOM_ENTREPRISE                TEXT                 null,
    EFFECTIF             INT4                 null,
    ANNEEDECREATION      INT4                 null,
-   constraint PK_ENTREPRISE primary key (_NOENTREPRISE__)
+   constraint PK_ENTREPRISE primary key (NOSIRET)
 );
 
 create table COMPTE (
    ID_COMPTE            SERIAL               ,
-   _NOENTREPRISE__      INT4                 not null,
+  -- _NOENTREPRISE__      INT4                 not null,
    IS_ADMIN             BOOL                 not null,
    MAIL                 TEXT                 not null,
    PWD                  TEXT                 not null,
@@ -34,6 +33,7 @@ create table CATEGORIE_QUESTION (
 create table EVALUATION (
    ID_EVALUATION        SERIAL               ,
    ID_COMPTE            INT4                 not null,
+   ID_ENTREPRISE        INT4                 not null,
    constraint PK_EVALUATION primary key (ID_EVALUATION)
 );
 
@@ -98,7 +98,6 @@ create table SCORE_CATEGORY (
 );
 
 
-
 alter table SCORE_CATEGORY
    add constraint FK_ASSOCIAT_ASSOCIATI_EVALUATI foreign key (ID_EVALUATION)
       references EVALUATION (ID_EVALUATION)
@@ -114,14 +113,19 @@ alter table CATEGORIE_QUESTION
       references QUESTIONNAIRE (ID_QUESTIONNAIRE)
       on delete restrict on update restrict;
 
-alter table COMPTE
+/*alter table COMPTE
    add constraint FK_COMPTE_ASSOCIATI_ENTREPRI foreign key (_NOENTREPRISE__)
       references ENTREPRISE (_NOENTREPRISE__)
-      on delete restrict on update restrict;
+      on delete restrict on update restrict;*/
 
 alter table EVALUATION
    add constraint FK_EVALUATI_ASSOCIATI_COMPTE foreign key (ID_COMPTE)
-      references COMPTE (ID_COMPTE)
+     references COMPTE (ID_COMPTE)
+      on delete restrict on update restrict;
+     
+alter table EVALUATION  
+   add constraint FK_ASSOCIAT_ENTREP_EVALUATI foreign key (ID_ENTREPRISE)
+      references ENTREPRISE  (NOSIRET)
       on delete restrict on update restrict;
 
 alter table METIER_QUESTION
