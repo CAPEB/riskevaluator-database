@@ -26,6 +26,35 @@ CREATE TABLE public.questionnaire (
 	CONSTRAINT questionnaire_pkey PRIMARY KEY (id_questionnaire),
 	CONSTRAINT ukhnqfog8s68hf67f8ysrrnj0st UNIQUE (thematique)
 );
+-- public."role" definition
+-- Drop table
+-- DROP TABLE public."role";
+CREATE TABLE public."role" (
+	id serial4 NOT NULL,
+	"name" varchar(20) NULL,
+	CONSTRAINT role_pkey PRIMARY KEY (id),
+	CONSTRAINT uk_8sewwnpamngi6b1dwaa88askk UNIQUE (name)
+);
+-- public.status_entity definition
+-- Drop table
+-- DROP TABLE public.status_entity;
+CREATE TABLE public.status_entity (
+	id bigserial NOT NULL,
+	ok varchar(255) NULL,
+	CONSTRAINT status_entity_pkey PRIMARY KEY (id)
+);
+-- public.user_entity definition
+-- Drop table
+-- DROP TABLE public.user_entity;
+CREATE TABLE public.user_entity (
+	id bigserial NOT NULL,
+	email varchar(255) NULL,
+	"password" varchar(255) NULL,
+	username varchar(255) NULL,
+	CONSTRAINT uk2jsk4eakd0rmvybo409wgwxuw UNIQUE (username),
+	CONSTRAINT uk4xad1enskw4j1t2866f7sodrx UNIQUE (email),
+	CONSTRAINT user_entity_pkey PRIMARY KEY (id)
+);
 -- public.categorie_question definition
 -- Drop table
 -- DROP TABLE public.categorie_question;
@@ -120,6 +149,16 @@ CREATE TABLE public.score_category (
 	CONSTRAINT score_category_pkey PRIMARY KEY (id_categorie, id_evaluation),
 	CONSTRAINT fk78v7np6darpj0o1dp1n8f3viw FOREIGN KEY (id_evaluation) REFERENCES public.evaluation(id_evaluation),
 	CONSTRAINT fk8wjhr1aeaoeq1gmogf3ryanhb FOREIGN KEY (id_categorie) REFERENCES public.categorie_question(id_categorie)
+);
+-- public.user_roles definition
+-- Drop table
+-- DROP TABLE public.user_roles;
+CREATE TABLE public.user_roles (
+	user_id int8 NOT NULL,
+	role_id int4 NOT NULL,
+	CONSTRAINT user_roles_pkey PRIMARY KEY (user_id, role_id),
+	CONSTRAINT fk6y02653x6ebhsu2plf21ard62 FOREIGN KEY (user_id) REFERENCES public.user_entity(id),
+	CONSTRAINT fkrhfovtciq1l558cw6udg0h0d3 FOREIGN KEY (role_id) REFERENCES public."role"(id)
 );
 -- public.metier_question definition
 -- Drop table
