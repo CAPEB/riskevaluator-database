@@ -22,10 +22,10 @@ insert  into metier  (nom_metier) values ('Menuisier');
 insert  into metier  (nom_metier) values ('Charpentier');
 insert  into metier  (nom_metier) values ('Maçon');
 
-insert  into question  (id_categorie,aide_question,q_type,libelle_question) values (4,'ceci est une aide','QUESTION_CHOIX_UNIQUE','Vos salariés ont-ils à disposition des masques anti-poussière');
-insert  into question  (id_categorie,aide_question,q_type,libelle_question) values (2,'j''ai besoin d''aiiide','QUESTION_CHOIX_UNIQUE','Déplacez-vous les matériaux au plus près de la zone de chantier');
-insert  into question  (id_categorie,aide_question,q_type,libelle_question) values (1,'aidez moi','QUESTION_CHOIX_MULTIPLE','Quels sont les EPI à disposition des salariés');
-insert  into question  (id_categorie,aide_question,q_type,libelle_question) values (1,'help me','QUESTION_CHOIX_MULTIPLE','Proposez-vous d''éventuelles formations à vos salariés parmi les choix suivants? ');
+insert  into question  (id_categorie,q_type,libelle_question) values (4,'QUESTION_CHOIX_UNIQUE','Vos salariés ont-ils à disposition des masques anti-poussière');
+insert  into question  (id_categorie,q_type,libelle_question) values (2,'QUESTION_CHOIX_UNIQUE','Déplacez-vous les matériaux au plus près de la zone de chantier');
+insert  into question  (id_categorie,q_type,libelle_question) values (1,'QUESTION_CHOIX_MULTIPLE','Quels sont les EPI à disposition des salariés');
+insert  into question  (id_categorie,q_type,libelle_question) values (1,'QUESTION_CHOIX_MULTIPLE','Proposez-vous d''éventuelles formations à vos salariés parmi les choix suivants? ');
 
 insert  into preconisation_globale  (id_questionnaire,contenu,view_if_pourcentage_score_less_than) values (1,'En France, le risque électrique représente plus de 30% des incendies et plus de 10 morts par an',70);
 insert  into preconisation_globale  (id_questionnaire,contenu,view_if_pourcentage_score_less_than) values (1,'Selon l’art. R4544-9 et 10, l’habilitation électrique pour non électricien est obligatoire, en cas d’accident du travail la responsabilité civile ou pénale de l’employeur pourra être engagée. L’employeur s’expose aux versements de dommages et intérêts et à une amende',80);

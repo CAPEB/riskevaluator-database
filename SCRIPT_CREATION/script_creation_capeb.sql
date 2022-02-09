@@ -178,7 +178,6 @@ CREATE TABLE public.preconisation_globale (
 
 CREATE TABLE public.question (
 	id_question serial4 NOT NULL,
-	aide_question text NOT NULL,
 	libelle_question text NOT NULL,
 	q_type varchar(255) NULL,
 	id_categorie int4 NOT NULL,
