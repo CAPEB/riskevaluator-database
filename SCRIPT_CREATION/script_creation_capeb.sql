@@ -179,6 +179,7 @@ CREATE TABLE public.preconisation_globale (
 CREATE TABLE public.question (
 	id_question serial4 NOT NULL,
 	libelle_question text NOT NULL,
+	score_max_possible int4 NULL DEFAULT 0,
 	q_type varchar(255) NULL,
 	id_categorie int4 NOT NULL,
 	CONSTRAINT question_pkey PRIMARY KEY (id_question),

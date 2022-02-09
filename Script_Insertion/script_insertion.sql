@@ -33,11 +33,11 @@ insert  into preconisation_globale  (id_questionnaire,contenu,view_if_pourcentag
 insert  into preconisation_categorie  (id_categorie ,contenu,view_if_pourcentage_score_less_than) values (2,'L’organisation du chantier est très importante, elle vous permettra d’éviter le port de charges inutiles et donc de réduire les risques physiques liées à la manutention manuelle qui représente 48% des accidents du travail',70);
 insert  into preconisation_categorie  (id_categorie ,contenu,view_if_pourcentage_score_less_than) values (4,'En 2019, l’amiante est à l’origine d’environ 3 000 maladies professionnelles et de 1 800 cancers. Si les moyens de protection nécessaires concernant ce risque ne sont pas respectés, vous risquez 1 an d’emprisonnement et 75 000 € d’amende pour mise en danger de la vie d’autrui',80);
 
-insert  into metier_question  (id_question, id_metier) values (1,6);
+insert  into metier_question  (id_question, id_metier) values (1,5);
 insert  into metier_question  (id_question, id_metier) values (1,7);
 insert  into metier_question  (id_question, id_metier) values (1,8);
 insert  into metier_question  (id_question, id_metier) values (2,6);
-insert  into metier_question  (id_question, id_metier) values (2,7);
+insert  into metier_question  (id_question, id_metier) values (2,5);
 insert  into metier_question  (id_question, id_metier) values (2,8);
 insert  into metier_question  (id_question, id_metier) values (3,6);
 insert  into metier_question  (id_question, id_metier) values (3,7);
