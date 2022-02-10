@@ -41,11 +41,12 @@ CREATE FUNCTION lib_quest() RETURNS trigger AS $lib_quest$
 	
     BEGIN
         
-        IF NEW.id_categorie IS NULL THEN
+         IF NEW.id_categorie IS NULL THEN
             RAISE EXCEPTION 'id categorie null';
         END IF;
+        select id_questionnaire into idq from categorie_question where id_categorie = new.id_categorie;
         select count(*) into nb from question
-		where (id_categorie in (SELECT id_categorie  FROM questionnaire q INNER JOIN categorie_question cq  ON q.id_questionnaire  = cq.id_questionnaire )) 
+		where (id_categorie in (SELECT id_categorie  FROM questionnaire q INNER JOIN categorie_question cq  ON q.id_questionnaire  = cq.id_questionnaire where q.id_questionnaire =idq)) 
 		and libelle_question = new.libelle_question  ;
 		
 		if  (TG_OP = 'INSERT') then
