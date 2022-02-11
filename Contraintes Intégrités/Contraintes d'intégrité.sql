@@ -14,10 +14,10 @@ ALTER TABLE reponse  ADD CONSTRAINT rep_unique UNIQUE (id_question, contenu);
 
 --contenu de préconisation contenu unique dans la catégorie pour un questionnaire
 
-alter table preconisation_categorie add constraint preco_unique unique (ID_PRECONISATION,id_categorie,contenu);
+alter table preconisation_categorie add constraint preco_unique unique (id_categorie,contenu);
 
 --contenu de préconisation globale unique par questionnaire 
-alter table preconisation_globale add constraint preco_g_unique unique (ID_PRECONISATION_g,id_questionnaire,contenu);
+alter table preconisation_globale add constraint preco_g_unique unique (id_questionnaire,contenu);
 
 --check id entreprise non null
 --ALTER TABLE compte  ADD CONSTRAINT compte_atr CHECK ( _noentreprise__ is not null) NOT VALID;
@@ -26,11 +26,11 @@ alter table preconisation_globale add constraint preco_g_unique unique (ID_PRECO
 
 --viewIfPourcentageScoreLessThan de la catégorie entre 0 et 100
 ALTER TABLE preconisation_categorie  ADD CONSTRAINT  score_positif 
-CHECK ( preconisation_categorie.viewIfPourcentageScoreLessThan > 0 and preconisation_categorie.viewIfPourcentageScoreLessThan < 100);
+CHECK ( preconisation_categorie.view_if_pourcentage_score_less_than > 0 and preconisation_categorie.view_if_pourcentage_score_less_than < 100);
 
 --viewIfPourcentageScoreLessThan globale entre 0 et 100
 ALTER TABLE preconisation_globale  ADD CONSTRAINT  score_positif_global 
-CHECK ( preconisation_globale.viewIfPourcentageScoreLessThan > 0 and preconisation_globale.viewIfPourcentageScoreLessThan < 100);
+CHECK ( preconisation_globale.view_if_pourcentage_score_less_than > 0 and preconisation_globale.view_if_pourcentage_score_less_than < 100);
 
 
 -- triggers

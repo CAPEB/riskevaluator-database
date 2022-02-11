@@ -10,7 +10,7 @@ CREATE FUNCTION score_max_question() RETURNS trigger AS $score_max_question$
 	
     BEGIN
         
-        SELECT "type" into type_quest from question where id_question=new.id_question;
+        SELECT q_type into type_quest from question where id_question=new.id_question;
         if type_quest = 'Question Choix Unique' THEN
             SELECT max(nb_points) into score_max FROM reponse  WHERE reponse.id_question = new.id_question ;
         else
