@@ -73,7 +73,18 @@ insert into reponse (id_question, nb_points, contenu) values (1,6,'Oui');
 insert into reponse (id_question, nb_points, contenu) values (1,0,'Non');
 insert into reponse (id_question, nb_points, contenu) values (1,3,'Certains');
 insert into reponse (id_question, nb_points, contenu) values (1,6,'Non Concerné');
+
 insert into reponse (id_question, nb_points, contenu) values (2,6,'Oui');
 insert into reponse (id_question, nb_points, contenu) values (2,0,'Non');
 insert into reponse (id_question, nb_points, contenu) values (2,3,'Certains');
 insert into reponse (id_question, nb_points, contenu) values (2,6,'Non Concerné');
+
+insert into reponse (id_question, nb_points, contenu) values (3,3,'physique');
+insert into reponse (id_question, nb_points, contenu) values (3,2,'logique');
+insert into reponse (id_question, nb_points, contenu) values (3,5,'internet');
+insert into reponse (id_question, nb_points, contenu) values (3,0,'pas disponible');
+
+insert into reponse (id_question, nb_points, contenu) values (4,6,'secouriste');
+insert into reponse (id_question, nb_points, contenu) values (4,5,'premier secours');
+insert into reponse (id_question, nb_points, contenu) values (4,3,'accident travail');
+insert into reponse (id_question, nb_points, contenu) values (4,2,'EBP');

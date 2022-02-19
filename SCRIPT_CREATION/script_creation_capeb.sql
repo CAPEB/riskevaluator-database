@@ -28,7 +28,7 @@ CREATE TABLE public.compte (
 -- DROP TABLE public.entreprise;
 
 CREATE TABLE public.entreprise (
-	nosiret int4 NOT NULL,
+	nosiret int8 NOT NULL,
 	anneedecreation int4 NULL,
 	effectif int4 NULL,
 	nom_entreprise varchar(255) NULL,
@@ -131,7 +131,7 @@ CREATE TABLE public.categorie_question (
 CREATE TABLE public.evaluation (
 	id_evaluation serial4 NOT NULL,
 	id_compte int4 NOT NULL,
-	nosiret int4 NOT NULL,
+	nosiret int8 NOT NULL,
 	CONSTRAINT evaluation_pkey PRIMARY KEY (id_evaluation),
 	CONSTRAINT fkfw17o0msl05lapxwndpi2qof7 FOREIGN KEY (id_compte) REFERENCES public.compte(id_compte),
 	CONSTRAINT fkrhcs8uil8v5ntk1679r6rawx0 FOREIGN KEY (nosiret) REFERENCES public.entreprise(nosiret)
